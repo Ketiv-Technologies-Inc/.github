@@ -1,0 +1,7 @@
+{
+  "name": "CodeQL (KETIV)",
+  "description": "GitHub CodeQL security + quality scanning. Runs on push, PR, and weekly. Default to C# and JavaScript/TypeScript; edit the language matrix per repo.",
+  "iconName": "github",
+  "categories": ["Security", "Code scanning", "CodeQL"],
+  "filePatterns": [".*"]
+}

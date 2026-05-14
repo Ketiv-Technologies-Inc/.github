@@ -1,0 +1,95 @@
+name: Bug report
+description: Something is broken or not behaving as documented.
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this. Please fill in what you can — partial info is better than no info.
+
+        For private or sensitive issues, or anything that should not be discussed in a public issue, contact **support@ketiv.com** instead.
+
+  - type: input
+    id: repo
+    attributes:
+      label: Repository
+      description: Which repo is this about? (Org and name, e.g., `Ketiv-Technologies-Inc/databridge-core`)
+      placeholder: Ketiv-Technologies-Inc/<repo>
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version / commit
+      description: Version number, release tag, or commit SHA where you observed the issue.
+      placeholder: v1.4.2 or commit abc1234
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you observe? Include error messages and stack traces verbatim.
+      placeholder: When I run X, I see Y...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      description: What should have happened instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps. A failing test or a small repo is gold.
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      description: Where did this happen?
+      options:
+        - Local dev
+        - CI
+        - Customer production
+        - Internal production
+        - Other (specify in additional context)
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / screenshots
+      description: Paste relevant logs (redact secrets and customer PII). Drag-and-drop screenshots if helpful.
+      render: shell
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Anything else that might help — workarounds tried, related issues, customer impact.
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I searched existing issues and this is not a duplicate.
+          required: true
+        - label: I have not included secrets, API keys, or customer PII in this report.
+          required: true

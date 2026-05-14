@@ -1,0 +1,38 @@
+# CODEOWNERS — KETIV-Technologies-Inc/.github
+#
+# Routes review requests automatically when a PR touches matching paths.
+# Owners listed here are auto-requested as reviewers; if branch protection
+# requires CODEOWNERS approval, the PR is blocked until one of them approves.
+#
+# Pattern syntax matches .gitignore. First match in this file wins per path —
+# so more-specific rules go *below* more-general ones.
+#
+# Reference:
+#   https://docs.github.com/en/repositories/managing-your-repositories-settings-and-features/customizing-your-repository/about-code-owners
+#
+# NOTE: Team slug `github-admins` is assumed. Verify the exact slug at
+#   https://github.com/orgs/Ketiv-Technologies-Inc/teams
+# A wrong slug fails silently — GitHub will not request the review and will
+# not flag the CODEOWNERS file as invalid in the PR UI.
+
+# ---- Default catch-all ----
+# Everything in this repo, unless overridden below.
+*                              @Ketiv-Technologies-Inc/github-admins
+
+# ---- Public marketing surface ----
+# profile/README.md renders at github.com/Ketiv-Technologies-Inc and should
+# pass the same review bar as the company homepage.
+/profile/                      @Ketiv-Technologies-Inc/github-admins
+
+# ---- Org-wide GitHub defaults ----
+# These propagate to every repo in the org that doesn't override them.
+# Changes affect all maintainers org-wide, so they belong here for review.
+/ISSUE_TEMPLATE/               @Ketiv-Technologies-Inc/github-admins
+/PULL_REQUEST_TEMPLATE.md      @Ketiv-Technologies-Inc/github-admins
+/workflow-templates/           @Ketiv-Technologies-Inc/github-admins
+
+# ---- Repo governance ----
+# Changes to these files affect how the repo itself is governed.
+/CODEOWNERS                    @Ketiv-Technologies-Inc/github-admins
+/.gitattributes                @Ketiv-Technologies-Inc/github-admins
+/.gitignore                    @Ketiv-Technologies-Inc/github-admins

@@ -1,0 +1,66 @@
+# .gitignore — KETIV-Technologies-Inc/.github
+#
+# This repo is mostly markdown + YAML + JSON, so the ignore list stays small.
+# We're guarding against editor / OS cruft and accidental local secrets.
+
+# ----- OS junk -----
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+.Spotlight-V100
+.Trashes
+
+# ----- Editor / IDE -----
+# Visual Studio
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains (Rider, IntelliJ, WebStorm)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Vim / Emacs / Sublime
+*.swp
+*.swo
+*~
+*.sublime-workspace
+*.sublime-project
+
+# ----- Local artifacts -----
+# Anything that might hold a secret should never end up in this repo.
+.env
+.env.*
+!.env.example
+*.local
+*.log
+logs/
+
+# Build / temp output (defensive — we don't expect builds here)
+bin/
+obj/
+node_modules/
+dist/
+out/
+.cache/
+tmp/
+*.tmp
+
+# ----- Org-specific -----
+# Add here as we learn what locally-generated cruft shows up.

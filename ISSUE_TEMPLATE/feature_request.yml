@@ -1,0 +1,78 @@
+name: Feature request
+description: Propose new functionality or an enhancement.
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this to propose a feature, an API change, or a new integration. Start with the problem before the solution.
+
+  - type: input
+    id: repo
+    attributes:
+      label: Repository
+      description: Where would this feature live?
+      placeholder: Ketiv-Technologies-Inc/<repo>
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      description: Describe the user pain or business need. Avoid jumping to a solution here.
+      placeholder: As a <user type>, I cannot <goal> because <constraint>...
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: How would you solve it? Sketch the API or UX. It's OK to be rough.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What else did you think about? Why is this proposal better?
+
+  - type: dropdown
+    id: audience
+    attributes:
+      label: Who benefits?
+      options:
+        - Customers (external)
+        - Internal engineering / consulting
+        - Partners (Autodesk / Ansys / Tacton)
+        - Multiple — explain in additional context
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: How urgent is this?
+      options:
+        - Now — blocks active work
+        - Next quarter — strong demand
+        - Eventually — nice to have
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Links to customer requests, related issues, designs, prior art.
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I searched existing issues and discussions for prior proposals.
+          required: true

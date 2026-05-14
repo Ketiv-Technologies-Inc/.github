@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Customer support (paid customers)
+    url: https://ketiv.com/support
+    about: For installation, licensing, or production support, contact KETIV Support Services. Faster than GitHub for non-public issues.
+  - name: Private or sensitive issues
+    url: mailto:support@ketiv.com
+    about: For anything that should not be discussed in a public issue, email support@ketiv.com. Please do NOT open a public issue.
+  - name: KETIV Virtual Academy
+    url: https://ketiv.com/virtual-academy
+    about: Training, walkthroughs, and the broader engineering community.
+  - name: Questions about KETIV Products
+    url: https://ketiv.com/contact
+    about: Sales and general inquiries about DataBridge, Vault in the Cloud, or our practice areas.

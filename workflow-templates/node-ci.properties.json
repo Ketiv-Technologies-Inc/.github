@@ -1,0 +1,7 @@
+{
+  "name": "Node CI (KETIV)",
+  "description": "Install, lint, typecheck, and test on Node 20 + 22. Standard for KETIV TypeScript / JavaScript repos.",
+  "iconName": "nodejs",
+  "categories": ["Continuous integration", "JavaScript", "TypeScript", "Node"],
+  "filePatterns": ["package\\.json$", "tsconfig\\.json$"]
+}

@@ -1,0 +1,7 @@
+{
+  "name": ".NET CI (KETIV)",
+  "description": "Restore, build, test (Ubuntu + Windows), and publish .NET 8/9 test results. Standard for KETIV C# repos.",
+  "iconName": "dotnet",
+  "categories": ["Continuous integration", ".NET", "C#"],
+  "filePatterns": ["\\.sln$", "\\.csproj$", "global\\.json$", "Directory\\.Packages\\.props$"]
+}
