@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- Drop the Ketiv wordmark here. Recommended: SVG, ~280px wide, transparent background. -->
-<img src="./assets/ketiv-wordmark.svg" alt="KETIV" width="280" />
+<img src="./assets/KETIV Logo Red.png" alt="KETIV" width="280" />
 
 ### Digital manufacturing solutions for the people who build real things.
 
@@ -51,7 +51,7 @@ Each practice has a paired **Solutions** track and **Consulting** offering — s
 
 **Nucor Warehouse Systems** auto-generates bay drawings, BOMs, and rack layouts directly from configurator inputs. **TOMRA Foods** assembles full system layouts in Inventor and AutoCAD from a 3D component library — with pricing attached.
 
-**98% customer satisfaction** across KETIV Support Services. **30,000+** engineers in the KETIV Virtual Academy community.
+**98% customer satisfaction** across KETIV Support Services. **30,000+** users and thousands of engineers in the KETIV Virtual Academy community.
 
 ---
 
