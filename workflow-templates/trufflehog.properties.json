@@ -1,0 +1,9 @@
+{
+  "name": "TruffleHog Secret Scan",
+  "description": "Scans commits and PRs for leaked credentials using TruffleHog OSS. Flags only verified/live secrets to minimize noise.",
+  "iconName": "octicon-shield-lock",
+  "categories": [
+    "Security",
+    "Continuous Integration"
+  ]
+}
