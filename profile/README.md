@@ -5,7 +5,7 @@
 
 ### Digital manufacturing solutions for the people who build real things.
 
-**[ketiv.com](https://ketiv.com)** &nbsp;·&nbsp; **[Virtual Academy](https://ketiv.com/virtual-academy)** &nbsp;·&nbsp; **[Blog](https://ketiv.com/blog)** &nbsp;·&nbsp; **[Contact](mailto:support@ketiv.com)**
+**[ketiv.com](https://ketiv.com)** &nbsp;·&nbsp; **[Virtual Academy](https://ketiv.com/ketiv-virtual-academy)** &nbsp;·&nbsp; **[Blog](https://ketiv.com/blog)** &nbsp;·&nbsp; **[Contact](mailto:support@ketiv.com)**
 
 </div>
 
