@@ -31,15 +31,15 @@ Each practice has a paired **Solutions** track and **Consulting** offering — s
 
 ## Products we build
 
-- **[KETIV DataBridge](https://ketiv.com/databridge)** — middleware that synchronizes product and manufacturing data across CAD, ERP, PDM, and CPQ. The integration layer for the digital thread.
-- **[Autodesk Vault in the Cloud by KETIV](https://ketiv.com/vault-in-the-cloud)** — managed, cloud-hosted Autodesk Vault PDM. The Vault you know, without the on-prem infrastructure.
+- **[KETIV DataBridge](https://ketiv.com/manufacturing-data-integration)** — middleware that synchronizes product and manufacturing data across CAD, ERP, PDM, and CPQ. The integration layer for the digital thread.
+- **[Autodesk Vault in the Cloud by KETIV](https://ketiv.com/autodesk-vault-cloud/)** — managed, cloud-hosted Autodesk Vault PDM. The Vault you know, without the on-prem infrastructure.
 
 ## Partners we work with
 
-[![Autodesk](https://img.shields.io/badge/Autodesk-Platinum_Partner-0696D7?style=flat-square&logo=autodesk&logoColor=white)](https://ketiv.com/autodesk)
-[![Ansys](https://img.shields.io/badge/Ansys-Elite_Channel_Partner-FFB71B?style=flat-square&logoColor=black)](https://ketiv.com/ansys)
-[![Tacton](https://img.shields.io/badge/Tacton-CPQ_Partner-1A1A1A?style=flat-square)](https://ketiv.com/tacton)
-[![Pinnacle](https://img.shields.io/badge/Pinnacle-Learning_Partner-005EB8?style=flat-square)](https://ketiv.com/pinnacle)
+[![Autodesk](https://img.shields.io/badge/Autodesk-Platinum_Partner-0696D7?style=flat-square&logo=autodesk&logoColor=white)](https://ketiv.com/autodesk-software)
+[![Ansys](https://img.shields.io/badge/Ansys-Elite_Channel_Partner-FFB71B?style=flat-square&logoColor=black)](https://ketiv.com/ansys-software)
+[![Tacton](https://img.shields.io/badge/Tacton-CPQ_Partner-1A1A1A?style=flat-square)](https://ketiv.com/tacton-cpq)
+[![Pinnacle](https://img.shields.io/badge/Pinnacle-Learning_Partner-005EB8?style=flat-square)](https://ketiv.com/pinnacle-elearning)
 
 ## Proof, not promises
 
