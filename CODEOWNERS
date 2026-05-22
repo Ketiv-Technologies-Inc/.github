@@ -31,6 +31,16 @@
 /PULL_REQUEST_TEMPLATE.md      @Ketiv-Technologies-Inc/github-admins
 /workflow-templates/           @Ketiv-Technologies-Inc/github-admins
 
+# ---- Org automation manifest ----
+# This tree is the source of truth for what the Ketiv.GitHub.Automation
+# function applies to every repo in the org. Merging fires sync-manifest.yml
+# which writes the spec to App Configuration. PRs here must be reviewed.
+/org-automation/               @Ketiv-Technologies-Inc/github-admins
+
+# ---- Sync workflow ----
+# Touching the manifest sync workflow can break org-wide automation rollouts.
+/.github/workflows/sync-manifest.yml @Ketiv-Technologies-Inc/github-admins
+
 # ---- Repo governance ----
 # Changes to these files affect how the repo itself is governed.
 /CODEOWNERS                    @Ketiv-Technologies-Inc/github-admins

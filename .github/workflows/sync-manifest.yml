@@ -1,0 +1,81 @@
+name: Sync manifest to App Config
+
+# Fires on merges to main that touch the manifest tree (or this workflow itself).
+# Gated by the production environment on this repo — required reviewer approval
+# before the deployment job runs.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'org-automation/**'
+      - '.github/workflows/sync-manifest.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: sync-manifest-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate manifest against schema
+        run: |
+          set -euo pipefail
+          npm install -g ajv-cli@5 ajv-formats@3
+          ajv validate \
+            -c ajv-formats \
+            -s org-automation/manifest.schema.json \
+            -d org-automation/manifest.json \
+            --strict=false
+
+      - name: Scan files/ for secrets (TruffleHog)
+        if: hashFiles('org-automation/files/**') != ''
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./org-automation/files
+          extra_args: --only-verified --fail
+
+      - name: Azure login (OIDC, env-pinned)
+        uses: azure/login@v2
+        with:
+          client-id:       ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id:       ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: PUT manifest spec to App Configuration
+        env:
+          APP_CONFIG_NAME: ${{ vars.APP_CONFIG_NAME }}
+          COMMIT_SHA:      ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          MANIFEST=$(jq -c . org-automation/manifest.json)
+          az appconfig kv set \
+            --name "$APP_CONFIG_NAME" \
+            --key  "Ketiv:GitHub:Automation:Manifest" \
+            --value "$MANIFEST" \
+            --tags "gitCommitSha=$COMMIT_SHA" \
+            --auth-mode login \
+            --yes
+
+      - name: Summary
+        env:
+          APP_CONFIG_NAME: ${{ vars.APP_CONFIG_NAME }}
+          COMMIT_SHA:      ${{ github.sha }}
+        run: |
+          echo "## Manifest synced to App Configuration" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **App Config:** \`$APP_CONFIG_NAME\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Key:** \`Ketiv:GitHub:Automation:Manifest\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Commit SHA tag:** \`$COMMIT_SHA\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Function instances pick up the new manifest within 60 seconds (in-memory cache TTL)." >> "$GITHUB_STEP_SUMMARY"

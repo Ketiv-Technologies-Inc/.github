@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/Ketiv-Technologies-Inc/.github/blob/main/org-automation/manifest.schema.json",
+  "title": "Ketiv GitHub Automation Manifest",
+  "description": "Declarative description of the tools the Ketiv.GitHub.Automation function applies to repos in the org. Edit via PR; merging fires sync-manifest.yml which writes this content to App Configuration.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "tools"],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0",
+      "description": "Schema version. Function asserts equality on load and rejects mismatches."
+    },
+    "defaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "applyTo":      { "type": "string", "description": "Selector applied as the default applyTo when a tool omits it." },
+        "skipForks":    { "type": "boolean", "default": true },
+        "skipArchived": { "type": "boolean", "default": true }
+      }
+    },
+    "tools": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/tool" }
+    }
+  },
+  "definitions": {
+    "tool": {
+      "type": "object",
+      "required": ["id", "kind", "enabled", "appliesTo"],
+      "properties": {
+        "id":         { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "kind":       { "enum": ["workflowFile", "configFile", "repoSetting", "appCheck"] },
+        "enabled":    { "type": "boolean" },
+        "required":   { "type": "boolean", "default": true },
+        "appliesTo":  { "type": "string", "description": "Selector: '*', 'name:foo-*', 'language:csharp,typescript', 'topic:has:public', 'visibility:public', etc. AND across expressions; OR within an expression." },
+        "source":     { "$ref": "#/definitions/source" },
+        "target":     { "type": "string", "description": "Path inside the target repo where this content is written. Required for workflowFile and configFile." },
+        "settings":   { "type": "object", "description": "Settings payload for repoSetting kinds. PATCH /repos/{o}/{r}." },
+        "prerequisite": { "$ref": "#/definitions/prerequisite" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "const": "workflowFile" } } },
+          "then": { "required": ["source", "target"] }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "configFile" } } },
+          "then": { "required": ["source", "target"] }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "repoSetting" } } },
+          "then": { "required": ["settings"] }
+        }
+      ]
+    },
+    "source": {
+      "type": "object",
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "required": ["type", "repo", "path", "ref"],
+          "properties": {
+            "type": { "const": "githubRepo" },
+            "repo": { "type": "string", "pattern": "^[^/]+/[^/]+$" },
+            "path": { "type": "string" },
+            "ref":  { "type": "string" }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": ["type", "path"],
+          "properties": {
+            "type": { "const": "gitFile" },
+            "path": { "type": "string", "description": "Path within the .github repo (this same repo)." }
+          }
+        }
+      ]
+    },
+    "prerequisite": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type":     { "enum": ["githubAppInstalled"] },
+        "appSlug":  { "type": "string" }
+      }
+    }
+  }
+}
