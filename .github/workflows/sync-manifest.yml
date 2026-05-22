@@ -58,9 +58,15 @@ jobs:
           COMMIT_SHA:      ${{ github.sha }}
         run: |
           set -euo pipefail
+          # Use --endpoint, not --name. The Sync UAMI has data-plane access
+          # (App Configuration Data Owner) but not control-plane Reader, so it
+          # can't enumerate stores by name. The endpoint URL targets the data
+          # plane directly. See azure-sdk-for-python issue tracker; CLI hint
+          # in the error message confirms this is the supported path.
+          ENDPOINT="https://${APP_CONFIG_NAME}.azconfig.io"
           MANIFEST=$(jq -c . org-automation/manifest.json)
           az appconfig kv set \
-            --name "$APP_CONFIG_NAME" \
+            --endpoint "$ENDPOINT" \
             --key  "Ketiv:GitHub:Automation:Manifest" \
             --value "$MANIFEST" \
             --tags "gitCommitSha=$COMMIT_SHA" \
@@ -72,9 +78,10 @@ jobs:
           APP_CONFIG_NAME: ${{ vars.APP_CONFIG_NAME }}
           COMMIT_SHA:      ${{ github.sha }}
         run: |
+          ENDPOINT="https://${APP_CONFIG_NAME}.azconfig.io"
           echo "## Manifest synced to App Configuration" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "- **App Config:** \`$APP_CONFIG_NAME\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **App Config:** \`$APP_CONFIG_NAME\` (\`$ENDPOINT\`)" >> "$GITHUB_STEP_SUMMARY"
           echo "- **Key:** \`Ketiv:GitHub:Automation:Manifest\`" >> "$GITHUB_STEP_SUMMARY"
           echo "- **Commit SHA tag:** \`$COMMIT_SHA\`" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
